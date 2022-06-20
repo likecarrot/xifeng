@@ -23,6 +23,7 @@ public class startup {
         AMapLocationClientOption option;
 
         option=new AMapLocationClientOption();
+        option.setLocationProtocol(AMapLocationClientOption.AMapLocationProtocol.HTTPS);
         option.setOnceLocation(true);
         option.setGpsFirst(true);
         option.setGpsFirstTimeout(5000);
