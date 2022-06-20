@@ -3,6 +3,8 @@ package com.example.xifeng2.Startup;
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -15,25 +17,42 @@ import com.example.xifeng2.ShareEdit.ShareEdit;
 import androidx.annotation.NonNull;
 
 public class startup {
+    private static AMapLocationClient mapLocationClient;
+
     static public void Init(final Context context) throws Exception {
+//更新用户隐私配置
         AMapLocationClient.updatePrivacyAgree(context,true);
         AMapLocationClient.updatePrivacyShow(context,true,true);
-
-        AMapLocationClient mapLocationClient=new AMapLocationClient(context);
+//初始化变量
+        mapLocationClient=new AMapLocationClient(context);
+        //初始化操作类型
         AMapLocationClientOption option;
-
         option=new AMapLocationClientOption();
         option.setLocationProtocol(AMapLocationClientOption.AMapLocationProtocol.HTTPS);
         option.setOnceLocation(true);
         option.setGpsFirst(true);
         option.setGpsFirstTimeout(5000);
         option.setHttpTimeOut(10000);
+        option.setInterval(600000);
         option.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
         mapLocationClient.setLocationOption(option);
         mapLocationClient=new AMapLocationClient(context.getApplicationContext());
-        AMapLocationListener    listener=new AMapLocationListener() {
+
+        //新建一个handler
+        final Handler handler=new Handler(){
             @Override
-            public void onLocationChanged(AMapLocation aMapLocation) {
+            public void handleMessage(@NonNull Message msg) {
+                super.handleMessage(msg);
+                if (msg.what==0x1111){
+                    mapLocationClient.stopLocation();
+                }
+            }
+        };
+
+        //设置监听回调
+        final AMapLocationListener    listener=new AMapLocationListener() {
+            @Override
+        synchronized    public void onLocationChanged(AMapLocation aMapLocation) {
                 if (aMapLocation!=null){
                     if (aMapLocation.getErrorCode()==0){
                         ShareEdit  sharedEdit=new ShareEdit();
@@ -44,6 +63,9 @@ public class startup {
                         sharedEdit.Commit();
                         Log.d("startup", "经度-"+aMapLocation.getLongitude()+"纬度-"+aMapLocation.getLatitude()+"城市"+aMapLocation.getCity());
                         Toast.makeText(context, "经度-"+aMapLocation.getLongitude()+"纬度-"+aMapLocation.getLatitude()+"城市"+aMapLocation.getCity(), Toast.LENGTH_SHORT).show();
+                        Message message=handler.obtainMessage();
+                        message.what=0x1111;
+                        handler.sendMessage(message);
                     }
                 }else {
                     Toast.makeText(context,"Init Failed",Toast.LENGTH_SHORT).show();
@@ -53,5 +75,8 @@ public class startup {
         mapLocationClient.setLocationListener(listener);
         mapLocationClient.disableBackgroundLocation(false);
         mapLocationClient.startLocation();
+
+
     }
+
 }
