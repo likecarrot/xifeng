@@ -1,0 +1,2 @@
+configurations.maybeCreate("default")
+artifacts.add("default", file('AMapLocation_6.1.0_20220406.aar'))

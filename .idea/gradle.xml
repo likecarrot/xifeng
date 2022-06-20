@@ -11,6 +11,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/AMapLocation_6.1.0_20220406" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>

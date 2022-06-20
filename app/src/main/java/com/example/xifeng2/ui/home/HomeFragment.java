@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.xifeng2.R;
+import com.example.xifeng2.Startup.startup;
 
 public class HomeFragment extends Fragment {
 
@@ -30,6 +31,12 @@ public class HomeFragment extends Fragment {
                 textView.setText(s);
             }
         });
+        try {
+            startup.Init(getContext());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return root;
     }
 }
