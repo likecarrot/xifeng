@@ -43,6 +43,7 @@ public class startup {
                         sharedEdit.SetCity(R.string.城市,aMapLocation.getCity());
                         sharedEdit.Commit();
                         Log.d("startup", "经度-"+aMapLocation.getLongitude()+"纬度-"+aMapLocation.getLatitude()+"城市"+aMapLocation.getCity());
+                        Toast.makeText(context, "经度-"+aMapLocation.getLongitude()+"纬度-"+aMapLocation.getLatitude()+"城市"+aMapLocation.getCity(), Toast.LENGTH_SHORT).show();
                     }
                 }else {
                     Toast.makeText(context,"Init Failed",Toast.LENGTH_SHORT).show();
