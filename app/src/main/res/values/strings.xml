@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">xifeng2</string>
+    <string name="app_name">息风</string>
     <string name="title_home">首页</string>
     <string name="title_dashboard">定位</string>
     <string name="title_notifications">我的</string>
@@ -8,4 +8,13 @@
     <string name="纬度">key_latitude</string>
     <string name="城市">key_city</string>
     <string name="区域">key_district</string>
+
+    <string name="风力">key_wind</string>
+    <string name="紫外线">key_ultraviolet</string>
+    <string name="穿衣指数">key_confort</string>
+    <string name="空气质量">key_air_quality</string>
+    <string name="天气">key_skycon</string>
+    <string name="最后更新时间">last_update_date</string>
+    <string name="温度">key_temp</string>
+    <string name="城市_区域">key_city_region</string>
 </resources>

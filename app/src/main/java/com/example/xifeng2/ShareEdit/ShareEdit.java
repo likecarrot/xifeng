@@ -22,6 +22,15 @@ public class ShareEdit {
         sharedPreferences=context.getSharedPreferences("xifeng",Context.MODE_PRIVATE);
         editor=sharedPreferences.edit();
     }
+
+    public String   GetKeyString(int key,String defaultin){
+        return sharedPreferences.getString(context.getResources().getString(key),defaultin);
+    }
+    public void     SetKeyString(int key,String in){
+        editor.putString(context.getResources().getString(key),in);
+    }
+
+
     public void SetLongtitude(int key,double in){
         editor.putFloat(context.getResources().getString(R.string.经度),(float)in);
     }
