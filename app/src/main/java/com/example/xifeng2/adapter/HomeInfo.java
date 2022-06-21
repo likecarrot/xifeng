@@ -51,8 +51,7 @@ public class HomeInfo {
         java.util.Date  curDate =new Date(System.currentTimeMillis());
         date=format.format(curDate);
 
-        wind=info.getResult().getRealtime().getWind()+"级";
-
+        wind="风速-"+info.getResult().getRealtime().getWind().getSpeed()+"km/h";
         ultraviolet="紫外线程度-"+info.getResult().getRealtime().getLife_index().getUltraviolet().getDesc();
         dressing="穿衣指数-"+info.getResult().getRealtime().getLife_index().getComfort().getDesc();
         air_quality="空气质量-"+info.getResult().getRealtime().getAir_quality().getDescription().getUsa();

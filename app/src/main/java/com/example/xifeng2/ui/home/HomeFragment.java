@@ -26,6 +26,7 @@ import com.example.xifeng2.ApiServers.ApiServers;
 import com.example.xifeng2.GetContext.MyApplication;
 import com.example.xifeng2.R;
 import com.example.xifeng2.RetClass.realtime;
+import com.example.xifeng2.ShareEdit.ShareEdit;
 import com.example.xifeng2.Startup.startup;
 import com.example.xifeng2.adapter.HomeInfo;
 import com.example.xifeng2.adapter.HomeInfo_Adapter;
@@ -41,6 +42,7 @@ public class HomeFragment extends Fragment {
     private Handler handler;
     private LinearLayout    linearLayout;
 
+    private ShareEdit   shareEdit;
 
     private View    root;
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -56,7 +58,8 @@ public class HomeFragment extends Fragment {
 //            }
 //        });
 //
-
+        shareEdit=new ShareEdit();
+        shareEdit.InitShareEdit();
         return root;
     }
 
@@ -79,7 +82,7 @@ public class HomeFragment extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ApiServers  apiServers=retrofit.create(ApiServers.class);
-        Call<realtime>  call=apiServers.GetRealTime("tsmEhYjMZBN6FErG", 115.2545f,  33.5355f);
+        Call<realtime>  call=apiServers.GetRealTime("tsmEhYjMZBN6FErG", shareEdit.GetLongtitude(R.string.经度,115.2545f),  shareEdit.GetLatitude(R.string.纬度,33.5355f));
         call.enqueue(new Callback<realtime>() {
             @Override
             public void onResponse(Call<realtime> call, Response<realtime> response) {
