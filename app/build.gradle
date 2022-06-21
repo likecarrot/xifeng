@@ -4,6 +4,9 @@ android {
     compileSdkVersion 29
     buildToolsVersion '32.0.0'
 
+    buildFeatures{
+    dataBinding true
+}
     defaultConfig {
         applicationId "com.example.xifeng2"
         minSdkVersion 26
@@ -31,6 +34,11 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.1.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     implementation project(path: ':AMapLocation_6.1.0_20220406')
+    implementation project(path: ':okio-1.15.0')
+    implementation project(path: ':converter-gson-2.6.3')
+    implementation project(path: ':retrofit-2.6.3')
+    implementation project(path: ':okhttp-3.12.0')
+    implementation project(path: ':gson-2.8.0')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

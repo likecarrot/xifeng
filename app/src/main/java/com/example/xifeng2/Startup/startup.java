@@ -56,13 +56,14 @@ public class startup {
                 if (aMapLocation!=null){
                     if (aMapLocation.getErrorCode()==0){
                         ShareEdit  sharedEdit=new ShareEdit();
-                        sharedEdit.InitShareEdit(context);
+                        sharedEdit.InitShareEdit();
                         sharedEdit.SetLongtitude(R.string.经度,aMapLocation.getLongitude());
                         sharedEdit.SetLatitude(R.string.纬度,aMapLocation.getLatitude());
                         sharedEdit.SetCity(R.string.城市,aMapLocation.getCity());
+                        sharedEdit.SetDistrict(R.string.区域,aMapLocation.getDistrict());
                         sharedEdit.Commit();
-                        Log.d("startup", "经度-"+aMapLocation.getLongitude()+"纬度-"+aMapLocation.getLatitude()+"城市"+aMapLocation.getCity());
-                        Toast.makeText(context, "经度-"+aMapLocation.getLongitude()+"纬度-"+aMapLocation.getLatitude()+"城市"+aMapLocation.getCity(), Toast.LENGTH_SHORT).show();
+//                        Log.d("startup", "经度-"+aMapLocation.getLongitude()+"纬度-"+aMapLocation.getLatitude()+"城市"+aMapLocation.getCity());
+//                        Toast.makeText(context, "区域"+aMapLocation.getDistrict()+"经度-"+aMapLocation.getLongitude()+"纬度-"+aMapLocation.getLatitude()+"城市"+aMapLocation.getCity(), Toast.LENGTH_SHORT).show();
                         Message message=handler.obtainMessage();
                         message.what=0x1111;
                         handler.sendMessage(message);

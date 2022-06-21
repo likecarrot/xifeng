@@ -3,7 +3,9 @@ package com.example.xifeng2.ShareEdit;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.preference.PreferenceManager;
 
+import com.example.xifeng2.GetContext.MyApplication;
 import com.example.xifeng2.R;
 
 import java.util.Map;
@@ -15,10 +17,10 @@ public class ShareEdit {
     private SharedPreferences.Editor    editor;
     private SharedPreferences   sharedPreferences;
     private Context context;
-    public void InitShareEdit(Context context){
+    public void InitShareEdit(){
+        this.context= MyApplication.getContext();
         sharedPreferences=context.getSharedPreferences("xifeng",Context.MODE_PRIVATE);
         editor=sharedPreferences.edit();
-        this.context=context;
     }
     public void SetLongtitude(int key,double in){
         editor.putFloat(context.getResources().getString(R.string.经度),(float)in);
@@ -29,6 +31,13 @@ public class ShareEdit {
     public void SetCity(int key,String in){
         editor.putString(context.getResources().getString(R.string.城市),in);
     }
+    public void SetDistrict(int key,String in){
+        editor.putString(context.getResources().getString(R.string.区域),in);
+    }
+    public String   GetDistrict(int key,String Defaultin){
+        return sharedPreferences.getString(context.getResources().getString(R.string.区域),Defaultin);
+    }
+
     public String   GetCity(int key,String Defaultin){
         return sharedPreferences.getString(context.getResources().getString(R.string.城市),Defaultin);
     }

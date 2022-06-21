@@ -7,4 +7,5 @@
     <string name="经度">key_longitude</string>
     <string name="纬度">key_latitude</string>
     <string name="城市">key_city</string>
+    <string name="区域">key_district</string>
 </resources>

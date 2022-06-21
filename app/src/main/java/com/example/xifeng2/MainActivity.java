@@ -3,6 +3,7 @@ package com.example.xifeng2;
 import android.os.Bundle;
 
 import com.example.xifeng2.Startup.GetPermission;
+import com.example.xifeng2.Startup.startup;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,7 +28,11 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
         GetPermission   getPermission=new GetPermission(MainActivity.this);
-
+        try {
+            startup.Init(MainActivity.this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
