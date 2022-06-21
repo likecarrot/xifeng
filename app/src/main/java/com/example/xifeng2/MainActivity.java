@@ -9,6 +9,7 @@ import com.example.xifeng2.ApiServers.ApiServers;
 import com.example.xifeng2.GetContext.MyApplication;
 import com.example.xifeng2.RetClass.realtime;
 import com.example.xifeng2.ShareEdit.ShareEdit;
+import com.example.xifeng2.Startup.GetPermission;
 import com.example.xifeng2.Startup.startup;
 import com.example.xifeng2.adapter.HomeInfo;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -36,6 +37,13 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+        GetPermission   getPermission=new GetPermission(this);
+        try {
+            Log.i("TAG1", "onCreate: ");
+            startup.Init(MyApplication.getContext());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_dashboard)
@@ -44,12 +52,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-
-        try {
-            startup.Init(MainActivity.this);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         new Thread(new Runnable() {
             @Override
@@ -72,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
                         }else{
                             assert response.body() != null;
                             homeInfo=new HomeInfo(response.body());
-                            Toast.makeText(MyApplication.getContext(), "Success", Toast.LENGTH_SHORT).show();
                             MyApplication.getHandler().obtainMessage(0x1112).sendToTarget();
                         }
                     }

@@ -23,19 +23,14 @@ import androidx.databinding.ViewDataBinding;
 public class HomeInfo_Adapter{
     private Context context;
     private HomeInfo    homeInfo;
-    HomeinfoLayoutBinding binding;
 
-    public HomeInfo_Adapter(Context context, HomeInfo homeInfo) {
-        this.context = context;
-        this.homeInfo = homeInfo;
-    }
     public HomeInfo_Adapter(HomeInfo homeInfo) {
         this.context = MyApplication.getContext();
         this.homeInfo = homeInfo;
     }
 
-    public void bindViewGroup(ViewGroup id) {
-        View v=LayoutInflater.from(context).inflate(R.layout.homeinfo_layout,id,true);
+    public void bindViewGroup(ViewGroup viewGroup) {
+        View v=LayoutInflater.from(context).inflate(R.layout.homeinfo_layout,viewGroup,true);
         TextView    keyCity=v.findViewById(R.id.key_city);
         TextView    keyAirQuality=v.findViewById(R.id.key_air_quality);
         TextView    keyData=v.findViewById(R.id.key_data);

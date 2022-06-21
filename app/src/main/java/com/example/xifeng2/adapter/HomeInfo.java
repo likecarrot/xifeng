@@ -41,11 +41,9 @@ public class HomeInfo {
     public HomeInfo(){
         shareEdit=new ShareEdit();
         shareEdit.InitShareEdit();
-
         String  unknown="未知数据";
-
         temp=shareEdit.GetKeyString(R.string.温度,"温度: "+unknown);
-        city=shareEdit.GetKeyString(R.string.城市_区域,"city: "+unknown);
+        city=shareEdit.GetCity(R.string.城市,"")+"-"+shareEdit.GetDistrict(R.string.区域,"");
         skycon=shareEdit.GetKeyString(R.string.天气,"skycon: "+unknown);
         date=shareEdit.GetKeyString(R.string.最后更新时间,"date: "+unknown);
         wind=shareEdit.GetKeyString(R.string.风力,"wind: "+unknown);
@@ -58,7 +56,7 @@ public class HomeInfo {
         shareEdit=new ShareEdit();
         shareEdit.InitShareEdit();
 
-        city=shareEdit.GetCity(R.string.城市,"")+"-"+shareEdit.GetDistrict(R.string.区域,"");
+        city="城市-"+shareEdit.GetCity(R.string.城市,"")+"-区域"+shareEdit.GetDistrict(R.string.区域,"");
         skycon=info.getResult().getRealtime().getSkycon();
         temp="温度: "+info.getResult().getRealtime().getTemperature()+"℃";
         SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");

@@ -54,28 +54,24 @@ public class startup {
             @Override
         synchronized    public void onLocationChanged(AMapLocation aMapLocation) {
                 if (aMapLocation!=null){
-                    if (aMapLocation.getErrorCode()==0){
-                        ShareEdit  sharedEdit=new ShareEdit();
+                    if (aMapLocation.getErrorCode()==0) {
+                        ShareEdit sharedEdit = new ShareEdit();
                         sharedEdit.InitShareEdit();
-                        sharedEdit.SetLongtitude(R.string.经度,aMapLocation.getLongitude());
-                        sharedEdit.SetLatitude(R.string.纬度,aMapLocation.getLatitude());
-                        sharedEdit.SetCity(R.string.城市,aMapLocation.getCity());
-                        sharedEdit.SetDistrict(R.string.区域,aMapLocation.getDistrict());
+                        sharedEdit.SetLongtitude(R.string.经度, aMapLocation.getLongitude());
+                        sharedEdit.SetLatitude(R.string.纬度, aMapLocation.getLatitude());
+                        sharedEdit.SetCity(R.string.城市, aMapLocation.getCity());
+                        sharedEdit.SetDistrict(R.string.区域, aMapLocation.getDistrict());
                         sharedEdit.Commit();
-                        Message message=handler.obtainMessage();
-                        message.what=0x1111;
+                        Message message = handler.obtainMessage();
+                        message.what = 0x1111;
                         handler.sendMessage(message);
                     }
-                }else {
-                    Toast.makeText(context,"Init Failed",Toast.LENGTH_SHORT).show();
                 }
             }
         };
         mapLocationClient.setLocationListener(listener);
         mapLocationClient.disableBackgroundLocation(false);
         mapLocationClient.startLocation();
-
-
     }
 
 }

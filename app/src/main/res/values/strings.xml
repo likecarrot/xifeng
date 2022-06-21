@@ -2,7 +2,6 @@
     <string name="app_name">息风</string>
     <string name="title_home">首页</string>
     <string name="title_dashboard">定位</string>
-    <string name="title_notifications">我的</string>
     
     <string name="经度">key_longitude</string>
     <string name="纬度">key_latitude</string>

@@ -35,7 +35,8 @@
         android:theme="@style/QMUI.Compat"
         android:name=".GetContext.MyApplication">
 
-        <meta-data  android:name="com.amap.api.v2.apikey" android:value="53fa898877d776f166f6b436e397e049"/>
+        <meta-data  android:name="com.amap.api.v2.apikey" android:value="53fa898877d776f166f6b436e397e049"></meta-data>
+        <service android:name="com.amap.api.location.APSService"></service>
 
         <activity
             android:name=".MainActivity"

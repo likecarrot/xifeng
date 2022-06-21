@@ -32,30 +32,30 @@ public class ShareEdit {
 
 
     public void SetLongtitude(int key,double in){
-        editor.putFloat(context.getResources().getString(R.string.经度),(float)in);
+        editor.putFloat(context.getResources().getString(key),(float)in);
     }
     public void SetLatitude(int key,double in){
-        editor.putFloat(context.getResources().getString(R.string.纬度),(float)in);
+        editor.putFloat(context.getResources().getString(key),(float)in);
     }
     public void SetCity(int key,String in){
-        editor.putString(context.getResources().getString(R.string.城市),in);
+        editor.putString(context.getResources().getString(key),in);
     }
     public void SetDistrict(int key,String in){
-        editor.putString(context.getResources().getString(R.string.区域),in);
+        editor.putString(context.getResources().getString(key),in);
     }
     public String   GetDistrict(int key,String Defaultin){
-        return sharedPreferences.getString(context.getResources().getString(R.string.区域),Defaultin);
+        return sharedPreferences.getString(context.getResources().getString(key),Defaultin);
     }
 
     public String   GetCity(int key,String Defaultin){
-        return sharedPreferences.getString(context.getResources().getString(R.string.城市),Defaultin);
+        return sharedPreferences.getString(context.getResources().getString(key),Defaultin);
     }
 
     public float GetLongtitude(int key,float Defaultin){
-        return sharedPreferences.getFloat(context.getResources().getString(R.string.经度),Defaultin);
+        return sharedPreferences.getFloat(context.getResources().getString(key),Defaultin);
     }
     public float GetLatitude(int key,float Defaultin){
-        return sharedPreferences.getFloat(context.getResources().getString(R.string.纬度),Defaultin);
+        return sharedPreferences.getFloat(context.getResources().getString(key),Defaultin);
     }
 
 

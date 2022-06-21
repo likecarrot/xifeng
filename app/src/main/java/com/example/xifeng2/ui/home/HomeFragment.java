@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,8 +22,7 @@ public class HomeFragment extends Fragment {
 
     private HomeInfo homeInfo;
     private HomeInfo_Adapter homeInfo_adapter;
-    private LinearLayout linearLayout;
-    private Handler myhandler;
+    private static     LinearLayout linearLayout;
     private ShareEdit shareEdit;
     private View root;
 
@@ -33,16 +33,35 @@ public class HomeFragment extends Fragment {
 
         shareEdit = new ShareEdit();
         shareEdit.InitShareEdit();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(false==MyApplication.getHandler().hasMessages(0x1112)){
+                }
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        homeInfo = new HomeInfo();
+                        homeInfo_adapter = new HomeInfo_Adapter(homeInfo);
+                        homeInfo_adapter.bindViewGroup(linearLayout);
+                    }
+                });
+            }
+        }).start();
 
         return root;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        homeInfo = new HomeInfo();
-        homeInfo_adapter = new HomeInfo_Adapter(homeInfo);
-        homeInfo_adapter.bindViewGroup(linearLayout);
+    public void onStart() {
+        super.onStart();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        homeInfo = new HomeInfo();
+                        homeInfo_adapter = new HomeInfo_Adapter(homeInfo);
+                        homeInfo_adapter.bindViewGroup(linearLayout);
+                    }
+                });
     }
-
 }
