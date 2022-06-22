@@ -17,12 +17,13 @@ import com.example.xifeng2.R;
 import com.example.xifeng2.ShareEdit.ShareEdit;
 import com.example.xifeng2.adapter.HomeInfo;
 import com.example.xifeng2.adapter.HomeInfo_Adapter;
+import com.qmuiteam.qmui.widget.QMUIEmptyView;
 
 public class HomeFragment extends Fragment {
 
     private HomeInfo homeInfo;
     private HomeInfo_Adapter homeInfo_adapter;
-    private static     LinearLayout linearLayout;
+    private static LinearLayout linearLayout;
     private ShareEdit shareEdit;
     private View root;
 

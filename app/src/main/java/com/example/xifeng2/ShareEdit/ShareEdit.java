@@ -29,6 +29,12 @@ public class ShareEdit {
     public void     SetKeyString(int key,String in){
         editor.putString(context.getResources().getString(key),in);
     }
+    public void SetKeyInt(int k,int defaultin){
+        editor.putInt(context.getResources().getString(k),defaultin);
+    }
+    public int  GetKeyInt(int k ,int defaultin){
+        return sharedPreferences.getInt(context.getResources().getString(k),defaultin);
+    }
 
 
     public void SetLongtitude(int key,double in){

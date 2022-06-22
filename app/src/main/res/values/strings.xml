@@ -16,4 +16,5 @@
     <string name="最后更新时间">last_update_date</string>
     <string name="温度">key_temp</string>
     <string name="城市_区域">key_city_region</string>
+    <string name="天气状况">key_ckycon_img</string>
 </resources>

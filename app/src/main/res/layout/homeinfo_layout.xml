@@ -1,86 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <data>
-
-    </data>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
     <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <!--    这是上边头部分-->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/linear_text">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/key_temp"
-                    android:textSize="52dp"
-                    android:text="12℃" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/key_city"
-                    android:textSize="44dp"
-                    android:text="12℃" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/key_skycon"
-                    android:textSize="40dp"
-                    android:text="12℃" />
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/sky_img"
-                android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <!--第二行-->
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
             android:orientation="vertical">
-
+        <TextView
+            android:layout_marginTop="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/key_city"
+            android:textSize="20dp"
+            android:text="河南;新乡"/>
             <TextView
-                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/key_data"/>
-
+                android:id="@+id/key_temp"
+                android:textSize="20dp"
+                android:text="36"/>
             <TextView
-                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/key_wind"/>
+                android:id="@+id/key_wind"
+                android:textSize="20dp"
+                android:text="2.2级"/>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/key_ultra"
+                android:textSize="20dp"
+                android:text="ultra"/>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/key_air_quality"
+                android:textSize="20dp"
+                android:text="靓号"/>
         </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/key_ultra"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/key_dressing"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/key_air_quality" />
-
-
+            android:layout_weight="5"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sky_skycon_img"
+                android:src="@drawable/daxue"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/key_skycon"
+                android:textSize="18dp"
+                android:text="skycon"
+                android:layout_gravity="center"/>
+        </LinearLayout>
     </LinearLayout>
-</layout>
+
+
+    <TextView
+        android:background="@color/qmui_config_color_gray_9"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/key_dressing"
+        android:textSize="20dp"
+        android:text="穿衣指数:"/>
+    <TextView
+        android:background="@color/qmui_config_color_gray_9"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/key_last_data"
+        android:textSize="20dp"
+        android:text="最后更新时间"/>
+
+</LinearLayout>

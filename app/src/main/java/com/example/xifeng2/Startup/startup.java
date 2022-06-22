@@ -61,6 +61,7 @@ public class startup {
                         sharedEdit.SetLatitude(R.string.纬度, aMapLocation.getLatitude());
                         sharedEdit.SetCity(R.string.城市, aMapLocation.getCity());
                         sharedEdit.SetDistrict(R.string.区域, aMapLocation.getDistrict());
+                        Log.i("TAG1", ": "+aMapLocation.getCity()+aMapLocation.getDistrict());
                         sharedEdit.Commit();
                         Message message = handler.obtainMessage();
                         message.what = 0x1111;
