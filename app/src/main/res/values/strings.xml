@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">息风</string>
     <string name="title_home">首页</string>
-    <string name="title_dashboard">定位</string>
+    <string name="title_dashboard">更新</string>
     
     <string name="经度">key_longitude</string>
     <string name="纬度">key_latitude</string>
@@ -17,4 +17,5 @@
     <string name="温度">key_temp</string>
     <string name="城市_区域">key_city_region</string>
     <string name="天气状况">key_ckycon_img</string>
+    <string name="首次运行">key_first</string>
 </resources>

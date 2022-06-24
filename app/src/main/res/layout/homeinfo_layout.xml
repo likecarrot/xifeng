@@ -76,6 +76,7 @@
 
 
     <TextView
+        android:layout_marginTop="5dp"
         android:background="@color/qmui_config_color_gray_9"
         android:layout_marginLeft="10dp"
         android:layout_width="match_parent"

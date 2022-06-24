@@ -6,11 +6,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.dashboard.DashboardFragment">
+    tools:context=".ui.dashboard.DashboardFragment"
+    android:gravity="center">
 
-    <com.qmuiteam.qmui.widget.QMUIAnimationListView
+    <TextView
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/dashboard_1"/>
+        android:layout_height="45dp"
+        android:text="更新定位"
+        android:background="@color/colorBackground"
+        android:id="@+id/dash_update_location"/>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="更新天气信息"
+        android:background="@color/colorBackground"
+        android:id="@+id/dash_update_weather"/>
+
 
 </LinearLayout>

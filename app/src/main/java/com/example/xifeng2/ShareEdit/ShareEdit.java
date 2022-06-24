@@ -17,11 +17,12 @@ public class ShareEdit {
     private SharedPreferences.Editor    editor;
     private SharedPreferences   sharedPreferences;
     private Context context;
-    public void InitShareEdit(){
+    public ShareEdit(){
         this.context= MyApplication.getContext();
         sharedPreferences=context.getSharedPreferences("xifeng",Context.MODE_PRIVATE);
         editor=sharedPreferences.edit();
     }
+
 
     public String   GetKeyString(int key,String defaultin){
         return sharedPreferences.getString(context.getResources().getString(key),defaultin);
@@ -37,33 +38,40 @@ public class ShareEdit {
     }
 
 
-    public void SetLongtitude(int key,double in){
-        editor.putFloat(context.getResources().getString(key),(float)in);
+    public void SetLongtitude(double in){
+        editor.putFloat(context.getResources().getString(R.string.经度),(float)in);
     }
-    public void SetLatitude(int key,double in){
-        editor.putFloat(context.getResources().getString(key),(float)in);
-    }
-    public void SetCity(int key,String in){
-        editor.putString(context.getResources().getString(key),in);
-    }
-    public void SetDistrict(int key,String in){
-        editor.putString(context.getResources().getString(key),in);
-    }
-    public String   GetDistrict(int key,String Defaultin){
-        return sharedPreferences.getString(context.getResources().getString(key),Defaultin);
+    public void SetLatitude(double in){
+        editor.putFloat(context.getResources().getString(R.string.纬度),(float)in);
     }
 
-    public String   GetCity(int key,String Defaultin){
-        return sharedPreferences.getString(context.getResources().getString(key),Defaultin);
+    public void SetCity(String in){
+        editor.putString(context.getResources().getString(R.string.城市),in);
+    }
+    public void SetDistrict(String in){
+        editor.putString(context.getResources().getString(R.string.区域),in);
     }
 
-    public float GetLongtitude(int key,float Defaultin){
-        return sharedPreferences.getFloat(context.getResources().getString(key),Defaultin);
+    public String   GetDistrict(){
+        return sharedPreferences.getString(context.getResources().getString(R.string.区域),"郸城县(默认)");
     }
-    public float GetLatitude(int key,float Defaultin){
-        return sharedPreferences.getFloat(context.getResources().getString(key),Defaultin);
+    public String   GetCity(){
+        return sharedPreferences.getString(context.getResources().getString(R.string.城市),"周口市(默认)");
     }
 
+    public float GetLongtitude(){
+        return sharedPreferences.getFloat(context.getResources().getString(R.string.经度),115.2545f);
+    }
+    public float GetLatitude(){
+        return sharedPreferences.getFloat(context.getResources().getString(R.string.纬度),33.5355f);
+    }
+    public boolean  GetFirstStart(){
+        return sharedPreferences.getBoolean(context.getResources().getString(R.string.首次运行),true);
+    }
+    public void     SetFirstStart(){
+        editor.putBoolean(context.getResources().getString(R.string.首次运行),false);
+        editor.commit();
+    }
 
 
 

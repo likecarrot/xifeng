@@ -53,22 +53,14 @@ public class HomeInfo {
             ,"浮尘","沙尘","大风"
     };
 
-    private ShareEdit   shareEdit;
+    private ShareEdit   shareEdit=new ShareEdit();
 
-//    private String comfort;        //舒适度指数0~13 闷热~舒适~干冷
-//    private String coldRisk;       //感冒指数
-//    private String carWashing;     //洗车指数
-// private String  temp_region;    //温度区间 28°C~32℃
-//    private HomeInfo_DailyWeather   todayto1;
-//    private HomeInfo_DailyWeather   todayto2;
-//    private HomeInfo_DailyWeather   todayto3;
 
     public HomeInfo(){
-        shareEdit=new ShareEdit();
-        shareEdit.InitShareEdit();
         String  unknown="未知数据";
         temp=shareEdit.GetKeyString(R.string.温度,"温度: "+unknown);
-        city=shareEdit.GetCity(R.string.城市,"")+"-"+shareEdit.GetDistrict(R.string.区域,"");
+        city=shareEdit.GetKeyString(R.string.城市_区域,"NULL");
+
         skycon=shareEdit.GetKeyString(R.string.天气,"skycon: "+unknown);
         date=shareEdit.GetKeyString(R.string.最后更新时间,"date: "+unknown);
         wind=shareEdit.GetKeyString(R.string.风力,"wind: "+unknown);
@@ -79,10 +71,7 @@ public class HomeInfo {
     }
 
     public HomeInfo(realtime info){
-        shareEdit=new ShareEdit();
-        shareEdit.InitShareEdit();
-
-        city="城市-"+shareEdit.GetCity(R.string.城市,"")+"-区域"+shareEdit.GetDistrict(R.string.区域,"");
+        city=shareEdit.GetCity()+"-"+shareEdit.GetDistrict();
         skycon=info.getResult().getRealtime().getSkycon();
         temp="实时温度: "+info.getResult().getRealtime().getTemperature()+"℃";
         SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");

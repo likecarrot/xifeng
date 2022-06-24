@@ -2,6 +2,8 @@ package com.example.xifeng2.ui.home;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,50 +21,58 @@ import com.example.xifeng2.adapter.HomeInfo;
 import com.example.xifeng2.adapter.HomeInfo_Adapter;
 import com.qmuiteam.qmui.widget.QMUIEmptyView;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class HomeFragment extends Fragment {
 
     private HomeInfo homeInfo;
     private HomeInfo_Adapter homeInfo_adapter;
     private static LinearLayout linearLayout;
-    private ShareEdit shareEdit;
     private View root;
+
+    private Handler handler;
 
     public View onCreateView(@NonNull final LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_home, container, false);
         linearLayout = root.findViewById(R.id.home_container);
 
-        shareEdit = new ShareEdit();
-        shareEdit.InitShareEdit();
-        new Thread(new Runnable() {
+        updateUI();
+
+        TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                while(false==MyApplication.getHandler().hasMessages(0x1112)){
-                }
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        homeInfo = new HomeInfo();
-                        homeInfo_adapter = new HomeInfo_Adapter(homeInfo);
-                        homeInfo_adapter.bindViewGroup(linearLayout);
-                    }
-                });
+                Message message = new Message();
+                message.what = 0x1113;
+                handler.sendMessage(message);
             }
-        }).start();
+        };
+        Timer timer = new Timer();
+        timer.schedule(task, 4000);
+
+        handler = new Handler() {
+            @Override
+            public void handleMessage(@NonNull Message msg) {
+                super.handleMessage(msg);
+                updateUI();
+            }
+        };
 
         return root;
     }
 
+
     @Override
-    public void onStart() {
-        super.onStart();
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        homeInfo = new HomeInfo();
-                        homeInfo_adapter = new HomeInfo_Adapter(homeInfo);
-                        homeInfo_adapter.bindViewGroup(linearLayout);
-                    }
-                });
+    public void onResume() {
+        super.onResume();
+        updateUI();
+    }
+
+    void updateUI() {
+        Log.i("TAG1", "updateUI:");
+        homeInfo = new HomeInfo();
+        homeInfo_adapter = new HomeInfo_Adapter(homeInfo);
+        homeInfo_adapter.bindViewGroup(linearLayout);
     }
 }
