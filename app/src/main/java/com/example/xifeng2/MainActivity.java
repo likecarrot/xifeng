@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             shareEdit.SetFirstStart(); //暂时关闭首次使用
             //dialog
             new QMUIDialog.MessageDialogBuilder(this)
-                    .setTitle("提示:如果不允许定位权限则无法正常工作.\n授予权限后请重启APP.")
+                    .setTitle("提示:如果不允许定位权限则无法正常工作.\n授予权限后请重启APP.\n提示更新定位成功后,点击右侧底部按钮更新天气信息.")
                     .addAction("知道了", new QMUIDialogAction.ActionListener() {
                         @Override
                         public void onClick(QMUIDialog dialog, int index) {

@@ -6,15 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.dashboard.DashboardFragment"
-    android:gravity="center">
+    tools:context=".ui.dashboard.DashboardFragment">
 
     <TextView
+        android:layout_marginTop="45dp"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:text="更新定位"
-        android:background="@color/colorBackground"
+        android:background="@color/colorPrimary"
         android:id="@+id/dash_update_location"/>
     <TextView
         android:layout_marginTop="10dp"
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:text="更新天气信息"
-        android:background="@color/colorBackground"
+        android:background="@color/colorPrimary"
         android:id="@+id/dash_update_weather"/>
 
 
